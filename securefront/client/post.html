@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Room</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #f8f8f8;
+        font-family: "Roboto", sans-serif;
+      }
+
+      section.chat__section {
+        width: 800px;
+        max-width: 90%;
+        background: #fff;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        border-radius: 10px; /* Added a rounded border */
+        overflow: hidden; /* Hide any overflowing content */
+      }
+
+      .brand {
+        padding: 20px;
+        background: #f1f1f1;
+        display: flex;
+        align-items: center;
+      }
+
+      .brand h1 {
+        text-transform: uppercase;
+        font-size: 20px;
+        color: #444;
+        margin-left: 10px;
+      }
+
+      .message__area {
+        height: 500px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        padding-top: 40px;
+      }
+
+      textarea {
+        width: 100%;
+        border: none;
+        padding: 20px;
+        font-size: 16px;
+        outline: none;
+        background: #fbfbfb;
+        border-top: 1px solid #ccc; /* Added a subtle top border */
+      }
+
+      .message {
+        padding: 20px;
+        border-radius: 4px;
+        margin-bottom: 20px; /* Reduced margin to improve spacing */
+        max-width: 70%; /* Adjusted maximum width */
+        position: relative;
+      }
+
+      .incoming {
+        background: #8f8be8;
+        color: #fff;
+        border-radius: 10px; /* Rounded corners for incoming messages */
+      }
+
+      .outgoing {
+        background: #e9eafd;
+        color: #787986;
+        margin-left: auto;
+        border-radius: 10px; /* Rounded corners for outgoing messages */
+      }
+
+      .message h4 {
+        position: absolute;
+        top: -20px;
+        left: 0;
+        color: #333;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="chat__section">
+      <div class="brand">
+        <h1>Your Chat Messenger</h1>
+      </div>
+
+      <div class="message__area"></div>
+
+      <div>
+        <textarea
+          id="textarea"
+          cols="30"
+          rows="1"
+          placeholder="Write a message..."
+        ></textarea>
+      </div>
+    </section>
+
+    <div id="active-users"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken@9.0.2/index.min.js"></script>
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./post.js"></script>
+  </body>
+</html>
